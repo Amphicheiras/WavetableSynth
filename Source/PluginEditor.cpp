@@ -13,6 +13,8 @@
 WavetableSynthAudioProcessorEditor::WavetableSynthAudioProcessorEditor (WavetableSynthAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
+    addAndMakeVisible(playStopButtonLabel);
+    playStopButtonLabel.setText("Play/Stop", juce::dontSendNotification);
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
@@ -30,11 +32,11 @@ void WavetableSynthAudioProcessorEditor::paint (juce::Graphics& g)
 
     g.setColour (juce::Colours::white);
     g.setFont (juce::FontOptions (15.0f));
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+    g.drawFittedText ("Sin Thesizer", getLocalBounds(), juce::Justification::centred, 1);
 }
 
 void WavetableSynthAudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+    playStopButton.setBounds({10, 10, 10, 10});
+    playStopButtonLabel.setBounds({ 10, 10, 10, 10 });
 }

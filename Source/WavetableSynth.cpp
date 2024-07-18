@@ -15,10 +15,25 @@ std::vector<float> WavetableSynth::generateSineWaveTable()
 	return sineWaveTable;
 }
 
+std::vector<float> WavetableSynth::generateSawWaveTable()
+{
+	constexpr auto WAVETABLE_LENGTH = 64;
+	std::vector<float> sawWaveTable(WAVETABLE_LENGTH);
+
+	const auto PI = std::atanf(1.f) * 4;
+
+	for (auto i = 0; i < WAVETABLE_LENGTH; i++)
+	{
+		sawWaveTable[i] = 2.0f * (static_cast<float>(i) / static_cast<float>(WAVETABLE_LENGTH)) - 1.0f;
+	}
+
+	return sawWaveTable;
+}
+
 void WavetableSynth::initializeOscillators()
 {
 	constexpr auto OSCILLATORS_COUNT = 128;
-	const auto waveTable = generateSineWaveTable();
+	const auto waveTable = generateSawWaveTable();
 
 	oscillators.clear();
 	for (auto i = 0; i < OSCILLATORS_COUNT; i++)

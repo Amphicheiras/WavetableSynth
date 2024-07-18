@@ -29,5 +29,11 @@ private:
     // access the processor object that created it.
     WavetableSynthAudioProcessor& audioProcessor;
 
+    // Button, Attachment & Label for play stop
+    juce::ToggleButton playStopButton;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment>
+        playStopAttachment;
+    juce::Label playStopButtonLabel;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WavetableSynthAudioProcessorEditor)
 };

@@ -11,6 +11,7 @@ public:
 private:
 	void initializeOscillators();
 	std::vector<float> generateSineWaveTable();
+	std::vector<float> generateSawWaveTable();
 	void handleMidiEvent(const juce::MidiMessage&);
 	float midiNoteNumberToFrequency(int midiNoteNumber);
 	void render(juce::AudioBuffer<float>& buffer, int startSample, int endSample);
