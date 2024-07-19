@@ -7,7 +7,7 @@ std::vector<float> WavetableSynth::generateSineWaveTable()
 
 	const auto PI = std::atanf(1.f) * 4;
 
-	for (auto i = 0; i < WAVETABLE_LENGTH; i++)
+	for (auto i = 0; i < WAVETABLE_LENGTH; ++i)
 	{
 		sineWaveTable[i] = std::sinf(2 * PI * static_cast<float>(i) / static_cast<float>(WAVETABLE_LENGTH));
 	}
@@ -22,7 +22,7 @@ std::vector<float> WavetableSynth::generateSawWaveTable()
 
 	const auto PI = std::atanf(1.f) * 4;
 
-	for (auto i = 0; i < WAVETABLE_LENGTH; i++)
+	for (auto i = 0; i < WAVETABLE_LENGTH; ++i)
 	{
 		sawWaveTable[i] = 2.0f * (static_cast<float>(i) / static_cast<float>(WAVETABLE_LENGTH)) - 1.0f;
 	}
@@ -36,7 +36,7 @@ void WavetableSynth::initializeOscillators()
 	const auto waveTable = generateSawWaveTable();
 
 	oscillators.clear();
-	for (auto i = 0; i < OSCILLATORS_COUNT; i++)
+	for (auto i = 0; i < OSCILLATORS_COUNT; ++i)
 	{
 		oscillators.emplace_back(waveTable, sampleRate);
 	}
